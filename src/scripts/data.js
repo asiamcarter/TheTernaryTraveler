@@ -13,7 +13,38 @@ const data = {
             },
             body: JSON.stringify(object)
         })
+    },
+
+    getInterest() {
+        return fetch("http://localhost:8088/interests/?_expand=place")
+        .then(response => response.json())
+    },
+
+    deleteInterest(interestId) {
+        return fetch(`http://localhost:8088/interests/${interestId}`, {
+          method: "DELETE",
+          headers: {
+              "Content-Type": "application/json"
+          }
+        })
+    },
+
+    getInterest2(id) {
+       return fetch (`http://localhost:8088/interests/${id}?_expand=place`)
+       .then(response => response.json())
+    },
+
+    editInterest (id, description) {
+        return fetch(`http://localhost:8088/interests/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(description)
+        })
+
     }
+
 
 }
 

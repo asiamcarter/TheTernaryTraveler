@@ -1,5 +1,6 @@
 import data from "./data"
-
+import DOMappend from "./DOMappend"
+import DOMbuilder from "./DOMbuilder";
 const eventListeners = {
 
     interestSave() {
@@ -17,9 +18,30 @@ const eventListeners = {
             review: ""
         }
 
-        data.postInterest(interestObject);
+        data.postInterest(interestObject)
+        .then (()=> {
+        DOMappend.appendToDOM()
+        })
+    },
 
+
+
+    interestDelete() {
+        let InterestDeleteId = event.target.id.split("--")[1]
+                data.deleteInterest(InterestDeleteId)
+                .then(() => {
+                    DOMbuilder.onPageLoad();
+                    DOMbuilder.interestFormCreator();
+                })
+    },
+
+    deletePrompt () {
+        if (confirm("Are you sure you want to delete?")) {
+            eventListeners.interestDelete()
+        } else {
+        }
     }
+
 }
 
 export default eventListeners;

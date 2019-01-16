@@ -16,14 +16,5 @@
       "visa_required": false
     }
   ],
-  "interests": [
-    {
-      "id": 1,
-      "placeId": 1,
-      "name": "local market",
-      "description": "real cool place",
-      "cost": 10,
-      "review": "would go again"
-    }
-  ]
+  "interests": []
 }
