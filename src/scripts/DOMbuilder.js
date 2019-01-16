@@ -99,7 +99,7 @@ const DOMbuilder = {
 
     interestHTML(value, id) {
         let interestContainer = document.createElement("container");
-        interestContainer.setAttribute("id", `interest--${id}`)
+        interestContainer.setAttribute("id", `interest--${value.id}`)
 
 
         let name = document.createElement("H2");
@@ -145,33 +145,36 @@ const DOMbuilder = {
     },
 
     interestEditForm (interest) {
-        console.log("EVENT TARGET", event.target.id)
         // let editField = document.querySelector(``)
         let interestEditId = event.target.id;
         let interestId = interestEditId.split("--")[1]
 
-
         let editInterestCostField = document.createElement("input");
         editInterestCostField.setAttribute("type", "text");
         editInterestCostField.classList.add("interestCostEditInput");
-        editInterestCostField.value = interest.cost;
+        let editCostLabel = document.createElement("label")
+        editCostLabel.textContent = "Cost:"
 
         let editInterestReviewField = document.createElement("input");
         editInterestReviewField.setAttribute("type", "text");
         editInterestReviewField.classList.add("interestReviewEditInput");
-        editInterestReviewField.value = interest.review;
+        let editReviewLabel = document.createElement("label");
+        editReviewLabel.textContent = "Add/Edit Review:"
+
 
         let saveButton = document.createElement("button");
         saveButton.textContent = "Save";
 
         data.getInterest2(interestId)
             .then (interest => {
+                console.log(interest.cost)
+                editInterestCostField.value = interest.cost
+                editInterestReviewField.value = interest.review
                 saveButton.addEventListener("click", () => {
                     let placeId = interest.placeId
                     let name = interest.name
                     let description = interest.description
-                    let cost= interest.cost
-                    let review = interest.review
+
 
                     let editedInterest = {
                         placeId : placeId,
@@ -193,7 +196,10 @@ const DOMbuilder = {
             // while (interestContainer.firstChild) {
             //     interestContainer.removeChild(interestContainer.firstChild);
             // }
+
+            interestContainer.appendChild(editCostLabel);
             interestContainer.appendChild(editInterestCostField);
+            interestContainer.appendChild(editReviewLabel);
             interestContainer.appendChild(editInterestReviewField);
             interestContainer.appendChild(saveButton);
             }

@@ -21,25 +21,41 @@
       "placeId": "3",
       "name": "",
       "description": "",
-      "cost": "undefined",
-      "review": "undefined",
-      "id": 1
-    },
-    {
-      "placeId": "3",
-      "name": "",
-      "description": "",
-      "cost": "undefined",
-      "review": "undefined",
+      "cost": "boo",
+      "review": "boo",
       "id": 2
     },
     {
       "placeId": "3",
       "name": "",
       "description": "",
-      "cost": "undefined",
-      "review": "undefined",
+      "cost": "yay",
+      "review": "yay",
       "id": 3
+    },
+    {
+      "placeId": "3",
+      "name": "hi",
+      "description": "hi",
+      "cost": "3",
+      "review": "test test test",
+      "id": 4
+    },
+    {
+      "placeId": "3",
+      "name": "hi",
+      "description": "hi",
+      "cost": "hi",
+      "review": "",
+      "id": 5
+    },
+    {
+      "placeId": "3",
+      "name": "hi",
+      "description": "hi",
+      "cost": "",
+      "review": "hey there looks good",
+      "id": 6
     }
   ]
 }
