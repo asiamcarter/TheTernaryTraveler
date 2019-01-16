@@ -101,6 +101,7 @@ const DOMbuilder = {
         let interestContainer = document.createElement("container");
         interestContainer.setAttribute("id", `interest--${id}`)
 
+
         let name = document.createElement("H2");
         name.innerHTML = `Name: <p>${value.name}</p>`
         interestContainer.appendChild(name);
@@ -111,7 +112,8 @@ const DOMbuilder = {
 
         let cost = document.createElement("H2");
         cost.innerHTML = `Cost: <p>${value.cost}</p>`
-        description.setAttribute("id", `cost--${id}`)
+        cost.setAttribute("id", `cost--${id}`)
+
         interestContainer.appendChild(cost);
 
         let review = document.createElement("H2")
@@ -128,8 +130,9 @@ const DOMbuilder = {
         interestContainer.classList.add("interestsContainer");
         // interestEditButton.addEventListener("click", eventListeners.interestEdit)
         interestDeleteButton.addEventListener("click", eventListeners.deletePrompt)
-        interestContainer.appendChild(interestEditButton);
         interestContainer.appendChild(interestDeleteButton);
+        interestContainer.appendChild(interestEditButton);
+
         data.getInterest()
             .then(() => {
                 interestEditButton.addEventListener("click", () => {
@@ -143,8 +146,10 @@ const DOMbuilder = {
 
     interestEditForm (interest) {
         console.log("EVENT TARGET", event.target.id)
+        // let editField = document.querySelector(``)
         let interestEditId = event.target.id;
         let interestId = interestEditId.split("--")[1]
+
 
         let editInterestCostField = document.createElement("input");
         editInterestCostField.setAttribute("type", "text");
@@ -192,12 +197,6 @@ const DOMbuilder = {
             interestContainer.appendChild(editInterestReviewField);
             interestContainer.appendChild(saveButton);
             }
-
-
-
-
-
-
 }
 
 export default DOMbuilder;

@@ -8,7 +8,7 @@ const DOMappend = {
             let interestFrag = document.createDocumentFragment()
             placesContainer.appendChild(interestFrag)
             interests.forEach(interest => {
-                let interestHTML = DOMbuilder.interestHTML(interest);
+                let interestHTML = DOMbuilder.interestHTML(interest, interest.id);
                 interestFrag.appendChild(interestHTML);
             })
             while (placesContainer.firstChild) {
