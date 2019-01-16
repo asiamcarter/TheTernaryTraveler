@@ -1,0 +1,33 @@
+.output {
+    display: flex;
+    flex-direction: row;
+}
+
+.interestFormContainer {
+    border: 1px solid black;
+    width: 40vw;
+    height: 100vh;
+}
+
+.placesContainer {
+    display: inline-flex;
+    border: 1px solid black;
+    width: 50vw;
+    height: 100vh;
+}
+
+.athensDiv,
+.florenceDiv,
+.madridDiv {
+    border: 1px solid blue;
+    width: 50vw;
+    height: 100%;
+    flex-basis: 40%;
+}
+
+.interestForm {
+    display: flex;
+    border: 1px solid red;
+    height: 100vh;
+    flex-direction: column;
+}
