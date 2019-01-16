@@ -31,6 +31,7 @@ const DOMbuilder = {
     interestFormCreator() {
         data.getPlaces()
         .then(places => {
+
             console.log(places);
             let interestForm = document.createElement("form");
             interestForm.classList.add("interestForm");
@@ -66,7 +67,7 @@ const DOMbuilder = {
             athensOption.textContent = `${places[0].name}`
 
             let florenceOption = document.createElement("option");
-            athensOption.setAttribute("value", "florence")
+            athensOption.setAttribute("value", `${places[1].id}`)
             florenceOption.textContent = `${places[1].name}`
 
 
@@ -79,7 +80,18 @@ const DOMbuilder = {
             placesDropdown.appendChild(athensOption)
             interestForm.appendChild(placesDropdown)
 
+            let interestSaveButton = document.createElement("button");
+            interestSaveButton.setAttribute("class", "interestSaveButton");
+            interestSaveButton.textContent = "Save";
+            interestForm.appendChild(interestSaveButton);
+
+            interestSaveButton.addEventListener("click", ()=> {
+                event.preventDefault()
+                console.log("CLICKED")
+            })
         })
+
+
 
 
     }
