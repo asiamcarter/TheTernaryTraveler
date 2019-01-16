@@ -1,4 +1,5 @@
 import data from "./data"
+import eventListeners from "./eventListeners"
 
 const DOMbuilder = {
     onPageLoad() {
@@ -50,6 +51,7 @@ const DOMbuilder = {
             let interestDescriptionLabel = document.createElement("label");
             interestDescriptionLabel.textContent = "Description:";
             interestDescriptionInput.setAttribute("type", "text");
+            interestNameInput.classList.add("interestDescription");
             interestForm.appendChild(interestDescriptionLabel);
             interestForm.appendChild(interestDescriptionInput);
 
@@ -57,13 +59,14 @@ const DOMbuilder = {
             let costLabel = document.createElement("label");
             costLabel.textContent = "Cost:";
             costInput.setAttribute("type", "text");
+            costInput.classList.add("interestCost");
             interestForm.appendChild(costLabel);
             interestForm.appendChild(costInput);
 
             let placesDropdown = document.createElement("select");
             placesDropdown.setAttribute("id", "mySelect");
             let athensOption = document.createElement("option");
-            athensOption.setAttribute("value", "athens")
+            athensOption.setAttribute("value", `${places[0].id}`)
             athensOption.textContent = `${places[0].name}`
 
             let florenceOption = document.createElement("option");
@@ -72,7 +75,7 @@ const DOMbuilder = {
 
 
             let madridOption = document.createElement("option");
-            madridOption.setAttribute("value", "madrid")
+            madridOption.setAttribute("value", `${places[2].id}`)
             madridOption.textContent = `${places[2].name}`
 
             placesDropdown.appendChild(madridOption)
@@ -85,16 +88,11 @@ const DOMbuilder = {
             interestSaveButton.textContent = "Save";
             interestForm.appendChild(interestSaveButton);
 
-            interestSaveButton.addEventListener("click", ()=> {
-                event.preventDefault()
-                console.log("CLICKED")
-            })
+            interestSaveButton.addEventListener("click", eventListeners.interestSave)
         })
+    },
 
 
-
-
-    }
 
 
 }
