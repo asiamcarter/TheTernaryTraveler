@@ -19,7 +19,6 @@
 .athensDiv,
 .florenceDiv,
 .madridDiv {
-    border: 1px solid blue;
     width: 50vw;
     height: 100%;
     flex-basis: 40%;
@@ -27,7 +26,11 @@
 
 .interestForm {
     display: flex;
-    border: 1px solid red;
     height: 100vh;
     flex-direction: column;
+}
+
+.placesContainer {
+    flex-direction: column;
+    overflow: auto;
 }
