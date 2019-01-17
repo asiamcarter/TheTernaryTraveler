@@ -16,14 +16,6 @@
     height: 100vh;
 }
 
-.athensDiv,
-.florenceDiv,
-.madridDiv {
-    width: 50vw;
-    height: 100%;
-    flex-basis: 40%;
-}
-
 .interestForm {
     display: flex;
     height: 100vh;
