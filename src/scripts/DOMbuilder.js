@@ -15,22 +15,6 @@ const DOMbuilder = {
         placesContainer.classList.add("placesContainer");
         outputContainer.appendChild(placesContainer);
 
-
-        // let athensDiv = document.createElement("div");
-        // athensDiv.classList.add("athensDiv");
-        // athensDiv.innerHTML= "<h2 class='placesHeader'>Athens</h2>"
-        // placesContainer.appendChild(athensDiv);
-
-        // let florenceDiv = document.createElement("div");
-        // florenceDiv.classList.add("florenceDiv");
-        // florenceDiv.innerHTML= "<h2 class='placesHeader'>Florence</h2>"
-        // placesContainer.appendChild(florenceDiv);
-
-        // let madridDiv = document.createElement("div");
-        // madridDiv.classList.add("madridDiv");
-        // madridDiv.innerHTML= "<h2 class='placesHeader'>Madrid</h2>"
-        // placesContainer.appendChild(madridDiv);
-
         DOMappend.appendToDOM();
     },
 
@@ -97,10 +81,13 @@ const DOMbuilder = {
         })
     },
 
-    interestHTML(value, id) {
+    interestHTML(value) {
         let interestContainer = document.createElement("container");
-        interestContainer.setAttribute("id", `interest--${id}`)
+        interestContainer.setAttribute("id", `interest--${value.id}`)
 
+        let place = document.createElement("h2");
+        place.innerHTML = `Place: <p>${value.place.name}</p>`
+        interestContainer.appendChild(place)
 
         let name = document.createElement("H2");
         name.innerHTML = `Name: <p>${value.name}</p>`
@@ -112,13 +99,13 @@ const DOMbuilder = {
 
         let cost = document.createElement("H2");
         cost.innerHTML = `Cost: <p>${value.cost}</p>`
-        cost.setAttribute("id", `cost--${id}`)
+        cost.setAttribute("id", `cost--${value.id}`)
 
         interestContainer.appendChild(cost);
 
         let review = document.createElement("H2")
         review.innerHTML = `Review: <p>${value.review}</p>`
-        review.setAttribute("id", `review--${id}`)
+        review.setAttribute("id", `review--${value.id}`)
         interestContainer.appendChild(review);
 
         let interestEditButton = document.createElement("button");
@@ -144,34 +131,37 @@ const DOMbuilder = {
 
     },
 
-    interestEditForm (interest) {
-        console.log("EVENT TARGET", event.target.id)
+    interestEditForm () {
         // let editField = document.querySelector(``)
         let interestEditId = event.target.id;
         let interestId = interestEditId.split("--")[1]
 
-
         let editInterestCostField = document.createElement("input");
         editInterestCostField.setAttribute("type", "text");
         editInterestCostField.classList.add("interestCostEditInput");
-        editInterestCostField.value = interest.cost;
+        let editCostLabel = document.createElement("label")
+        editCostLabel.textContent = "Cost:"
 
         let editInterestReviewField = document.createElement("input");
         editInterestReviewField.setAttribute("type", "text");
         editInterestReviewField.classList.add("interestReviewEditInput");
-        editInterestReviewField.value = interest.review;
+        let editReviewLabel = document.createElement("label");
+        editReviewLabel.textContent = "Add/Edit Review:"
+
 
         let saveButton = document.createElement("button");
         saveButton.textContent = "Save";
 
         data.getInterest2(interestId)
             .then (interest => {
+                console.log(interest.cost)
+                editInterestCostField.value = interest.cost
+                editInterestReviewField.value = interest.review
                 saveButton.addEventListener("click", () => {
                     let placeId = interest.placeId
                     let name = interest.name
                     let description = interest.description
-                    let cost= interest.cost
-                    let review = interest.review
+
 
                     let editedInterest = {
                         placeId : placeId,
@@ -193,7 +183,10 @@ const DOMbuilder = {
             // while (interestContainer.firstChild) {
             //     interestContainer.removeChild(interestContainer.firstChild);
             // }
+
+            interestContainer.appendChild(editCostLabel);
             interestContainer.appendChild(editInterestCostField);
+            interestContainer.appendChild(editReviewLabel);
             interestContainer.appendChild(editInterestReviewField);
             interestContainer.appendChild(saveButton);
             }

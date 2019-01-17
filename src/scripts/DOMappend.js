@@ -4,10 +4,11 @@ const DOMappend = {
     appendToDOM() {
         data.getInterest()
         .then (interests => {
+
             let placesContainer = document.querySelector(".placesContainer");
             let interestFrag = document.createDocumentFragment()
-            placesContainer.appendChild(interestFrag)
             interests.forEach(interest => {
+                console.log(interest.place)
                 let interestHTML = DOMbuilder.interestHTML(interest, interest.id);
                 interestFrag.appendChild(interestHTML);
             })

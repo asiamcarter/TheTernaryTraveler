@@ -19,27 +19,11 @@
   "interests": [
     {
       "placeId": "3",
-      "name": "",
-      "description": "",
-      "cost": "undefined",
-      "review": "undefined",
+      "name": "test",
+      "description": "test",
+      "cost": "6",
+      "review": "",
       "id": 1
-    },
-    {
-      "placeId": "3",
-      "name": "",
-      "description": "",
-      "cost": "undefined",
-      "review": "undefined",
-      "id": 2
-    },
-    {
-      "placeId": "3",
-      "name": "",
-      "description": "",
-      "cost": "undefined",
-      "review": "undefined",
-      "id": 3
     }
   ]
 }
