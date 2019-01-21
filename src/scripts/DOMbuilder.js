@@ -40,7 +40,7 @@ const DOMbuilder = {
             let interestDescriptionLabel = document.createElement("label");
             interestDescriptionLabel.textContent = "Description:";
             interestDescriptionInput.setAttribute("type", "text");
-            interestNameInput.classList.add("interestDescription");
+            interestDescriptionInput.classList.add("interestDescription");
             interestForm.appendChild(interestDescriptionLabel);
             interestForm.appendChild(interestDescriptionInput);
 
@@ -82,29 +82,29 @@ const DOMbuilder = {
     },
 
     interestHTML(value) {
+        console.log("VALUE", value)
         let interestContainer = document.createElement("container");
         interestContainer.setAttribute("id", `interest--${value.id}`)
 
         let place = document.createElement("h2");
-        place.innerHTML = `Place: <p>${value.place.name}</p>`
+        place.innerHTML = `Place: ${value.place.name}`
         interestContainer.appendChild(place)
 
-        let name = document.createElement("H2");
-        name.innerHTML = `Name: <p>${value.name}</p>`
+        let name = document.createElement("h2");
+        name.innerHTML = `Name: ${value.name}`
         interestContainer.appendChild(name);
 
-        let description = document.createElement("H2");
-        description.innerHTML = `Description: <p>${value.description}</p>`
+        let description = document.createElement("h2");
+        description.innerHTML = `Description: ${value.description}`
         interestContainer.appendChild(description);
 
-        let cost = document.createElement("H2");
-        cost.innerHTML = `Cost: <p>${value.cost}</p>`
+        let cost = document.createElement("h2");
+        cost.innerHTML = `Cost: ${value.cost}`
         cost.setAttribute("id", `cost--${value.id}`)
-
         interestContainer.appendChild(cost);
 
-        let review = document.createElement("H2")
-        review.innerHTML = `Review: <p>${value.review}</p>`
+        let review = document.createElement("h2")
+        review.innerHTML = `Review: ${value.review}`
         review.setAttribute("id", `review--${value.id}`)
         interestContainer.appendChild(review);
 
@@ -119,6 +119,9 @@ const DOMbuilder = {
         interestDeleteButton.addEventListener("click", eventListeners.deletePrompt)
         interestContainer.appendChild(interestDeleteButton);
         interestContainer.appendChild(interestEditButton);
+
+        let breakTag = document.createElement("hr")
+        interestContainer.appendChild(breakTag);
 
         data.getInterest()
             .then(() => {
@@ -179,10 +182,6 @@ const DOMbuilder = {
         })
 
         let interestContainer = document.querySelector(`#interest--${interestId}`);
-
-            // while (interestContainer.firstChild) {
-            //     interestContainer.removeChild(interestContainer.firstChild);
-            // }
 
             interestContainer.appendChild(editCostLabel);
             interestContainer.appendChild(editInterestCostField);

@@ -23,6 +23,11 @@
 }
 
 .placesContainer {
+    display: flex;
     flex-direction: column;
     overflow: auto;
+    margin-left: 20px;
+    padding: 30px;
+
 }
+

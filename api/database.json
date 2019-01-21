@@ -19,11 +19,19 @@
   "interests": [
     {
       "placeId": "3",
-      "name": "test",
-      "description": "test",
-      "cost": "6",
+      "name": "NAME",
+      "description": "DESCRIPTION",
+      "cost": "COST",
       "review": "",
       "id": 1
+    },
+    {
+      "placeId": "3",
+      "name": "tes",
+      "description": "testtt",
+      "cost": "resr",
+      "review": "",
+      "id": 2
     }
   ]
 }
